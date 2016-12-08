@@ -13,7 +13,7 @@ class ExceptionMagics(Magics):
     def custom_handler(self, etype, value, tb, tb_offset=None):
         stb = self.InteractiveTB.structured_traceback(etype, value, tb, tb_offset)
         for line in stb:
-            print line
+            print(line)
         return stb
 
     @cell_magic
