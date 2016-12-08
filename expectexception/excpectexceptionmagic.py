@@ -18,6 +18,13 @@ class ExceptionMagics(Magics):
 
     @cell_magic
     def expect_exception(self, line, cell):
+        self.run_cell(line, cell, True)
+
+    @cell_magic
+    def ignore_exception(self, line, cell):
+        self.run_cell(line, cell, False)
+
+    def run_cell(self, line, cell, exception_required):
         if not line:
             line = "Exception"
         try:
@@ -32,7 +39,7 @@ class ExceptionMagics(Magics):
         try:
             self.shell.set_custom_exc((exception,), self.custom_handler)
             result = self.shell.run_cell(cell)
-            if not (result.error_in_exec and isinstance(result.error_in_exec, exception)):
+            if exception_required and not result.error_in_exec:
                 raise ExceptionExpected("This cell did not raise the expected %s." % line)
         finally:
             self.shell.CustomTB = old_CustomTB
