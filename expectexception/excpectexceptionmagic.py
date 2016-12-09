@@ -1,3 +1,4 @@
+import sys
 from IPython.core.magic import Magics, magics_class, cell_magic
 
 
@@ -11,6 +12,11 @@ class ExceptionMagics(Magics):
     # Note: This gets made into an instance method on the IPython shell
     @staticmethod
     def custom_handler(self, etype, value, tb, tb_offset=None):
+        # Save these so that we can use the debugger.
+        sys.last_type = etype
+        sys.last_value = value
+        sys.last_traceback = tb
+
         stb = self.InteractiveTB.structured_traceback(etype, value, tb, tb_offset)
         for line in stb:
             print(line)
