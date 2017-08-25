@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from setuptools import setup
 
 setup(
-    name='Expect Exception',
-    version='0.1',
+    name='ExpectException',
+    version='0.1.1',
     description='Jupyter magic for exceptions',
     long_description='Display exceptions and tracebacks in Jupyter notebooks without halting execution.',
     author='Robert Schroll',
