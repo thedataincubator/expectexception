@@ -7,7 +7,7 @@ Expect Exception allows you to annotate cells in your [Jupyter notebook](https:/
 
 Expect Exception can be installed with pip:
 ```
-pip install git+https://github.com/thedataincubator/expectexception.git@master
+pip install expectexception
 ```
 
 ## Usage
